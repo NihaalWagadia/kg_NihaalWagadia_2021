@@ -32,7 +32,7 @@ public class KG {
 			System.out.println(kg.match(args[0],args[1]));	
 		}
 		else {
-			System.out.println("Not enough strings");
+			System.out.println("Need two strings");
 		}
 	}
 
