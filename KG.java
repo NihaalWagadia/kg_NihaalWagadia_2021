@@ -4,34 +4,36 @@ import java.util.Scanner;
 
 public class KG {
 	
-	public boolean match(String x, String y) {
-		Map<Character, Character>hm = new HashMap<Character, Character>();
-		int leng = x.length();
-		if(x.length()>y.length() || x.length()<y.length())return false;
-		for(int i=0; i<leng; i++) {
-			if(!hm.containsKey(x.charAt(i))) {
-				hm.put(x.charAt(i), y.charAt(i));
+	public boolean match(String string1, String string2) {
+		//hash_map to map every character from string1 with its corresponding character from string2
+		Map<Character, Character>hash_map = new HashMap<Character, Character>();
+
+		//If string length is not same, then it will return false
+		if(string1.length()>string2.length() || string1.length()<string2.length()) {
+			return false;
+		}
+		
+		for(int i=0; i<string1.length(); i++) {	
+			if(!hash_map.containsKey(string1.charAt(i))) {
+				hash_map.put(string1.charAt(i), string2.charAt(i));
 			}
 			else {
-				if(!hm.get(x.charAt(i)).equals(y.charAt(i))) {
+				if(!hash_map.get(string1.charAt(i)).equals(string2.charAt(i))) {
 					return false;
 				}
-				
 			}
 		}
 		return true;
-		
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		KG kg = new KG();
-		Scanner sc = new Scanner(System.in);
-		String s1 = sc.nextLine();
-		String s2 = sc.nextLine();
-		System.out.println(kg.match(s1,s2));
-	
-
+		if(args.length == 2) {
+			System.out.println(kg.match(args[0],args[1]));	
+		}
+		else {
+			System.out.println("Not enough strings");
+		}
 	}
 
 }
